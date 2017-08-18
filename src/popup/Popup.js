@@ -15,9 +15,9 @@ export default class Popup extends Component {
       tabs: [],
       search: {
         isLoading: false,
-        value: '',
         results: []
-      }
+      },
+      searchTerm: ''
     }
     this.handleSearchChange = this.handleSearchChange.bind(this)
     this.getChromeTabs = this.getChromeTabs.bind(this)
@@ -30,7 +30,6 @@ export default class Popup extends Component {
     this.setState({
       search: {
         isLoading: false,
-        value: '',
         results: []
       }
     })
@@ -49,25 +48,22 @@ export default class Popup extends Component {
 
     this.setState({
       search: {
-        value: searchTerm,
         isLoading: true
-      }
+      },
+      searchTerm: searchTerm
     })
-    window.setTimeout(() => {
-      if (this.state.search.value.length < 1) { // Pretty sure this produces the initial search typing bug
-        this.resetComponent()
-      }
-      const searchResults = fuse.search(searchTerm)
-      this.setState({search: {isLoading: false, results: searchResults}})
-    }, 500)
+    if (this.state.searchTerm.length < 1) {
+      this.resetComponent()
+    }
+    const searchResults = fuse.search(searchTerm)
+    this.setState({search: {isLoading: false, results: searchResults}})
   }
   render () {
     const tabs = this.state.tabs.map(tab => {
-      console.log(tab)
-      //const favicon = tab.favIconUrl.startsWith('chrome://') ? '' : tab.favIconUrl
+      const favicon = tab.favIconUrl.startsWith('chrome://') ? chromeFavicon : tab.favIconUrl
       return (
         <List.Item key={tab.id}>
-          <Image avatar src={tab.favIconUrl} />
+          <Image avatar src={favicon} />
           <List.Content>
             <List.Header>{tab.title}</List.Header>
           </List.Content>
@@ -75,10 +71,10 @@ export default class Popup extends Component {
       )
     })
     const searchResults = this.state.search.results.map(tab => {
-      //const favicon = tab.favIconUrl.startsWith('chrome://') ? '' : tab.favIconUrl
+      const favicon = tab.favIconUrl.startsWith('chrome://') ? chromeFavicon : tab.favIconUrl
       return (
         <List.Item key={tab.id}>
-          <Image avatar src={tab.favIconUrl} />
+          <Image avatar src={favicon} />
           <List.Content>
             <List.Header>{tab.title}</List.Header>
           </List.Content>
@@ -102,7 +98,7 @@ export default class Popup extends Component {
                 <input
                   type='search'
                   onChange={this.handleSearchChange}
-                  value={this.state.search.value}
+                  value={this.state.searchTerm}
                   placeholder='Beginn typing a title or an URL...'
                   ref='searchInput'
                 />
