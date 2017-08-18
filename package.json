@@ -5,9 +5,15 @@
   "description": "Chrome extension to organize tabs in a vertical, searchable list.",
   "main": "index.js",
   "scripts": {
-    "build": "webpack -p",
+    "lint": "standard --fix",
+    "build": "BABEL_ENV=production webpack -p",
     "watch": "BABEL_ENV=development webpack --watch",
-    "test": "jest"
+    "test": "jest && codecov",
+    "test:watch": "jest --watch --notify"
+  },
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
   },
   "keywords": [],
   "author": "Pascal Spiesz <pascal@slamcode.com>",
@@ -19,12 +25,21 @@
     "semantic-ui-css": "^2.2.12",
     "semantic-ui-react": "^0.71.4"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/herrfugbaum/FuzzTabs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/herrfugbaum/FuzzTabs/issues"
+  },
+  "homepage": "https://github.com/herrfugbaum/FuzzTabs#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.1",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react-app": "^3.0.2",
+    "babel-jest": "^20.0.3",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.5",
     "extract-text-webpack-plugin": "^3.0.0",
@@ -32,8 +47,10 @@
     "html-webpack-plugin": "^2.30.1",
     "img-loader": "^2.0.0",
     "jest": "^20.0.4",
+    "regenerator-runtime": "^0.11.0",
     "style-loader": "^0.18.2",
     "webpack": "^3.5.5",
-    "webpack-dev-server": "^2.7.1"
+    "webpack-dev-server": "^2.7.1",
+    "standard": "^10.0.3"
   }
 }
