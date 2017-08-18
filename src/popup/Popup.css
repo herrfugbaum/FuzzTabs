@@ -1,0 +1,8 @@
+html, body {
+  min-width: 640px;
+  max-width: 960px;
+}
+
+.fullwidth-input {
+  width: 100%;
+}

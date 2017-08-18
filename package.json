@@ -1,0 +1,39 @@
+{
+  "name": "fuzztabs",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Chrome extension to organize tabs in a vertical, searchable list.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack -p",
+    "watch": "BABEL_ENV=development webpack --watch",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "Pascal Spiesz <pascal@slamcode.com>",
+  "license": "MIT",
+  "dependencies": {
+    "fuse.js": "^3.0.5",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "semantic-ui-css": "^2.2.12",
+    "semantic-ui-react": "^0.71.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react-app": "^3.0.2",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.28.5",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^0.11.2",
+    "html-webpack-plugin": "^2.30.1",
+    "img-loader": "^2.0.0",
+    "jest": "^20.0.4",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.5.5",
+    "webpack-dev-server": "^2.7.1"
+  }
+}
