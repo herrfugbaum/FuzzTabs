@@ -2,9 +2,13 @@
 
 import React, { Component } from 'react'
 import Fuse from 'fuse.js'
-import { Container, Header, Grid, List, Image } from 'semantic-ui-react'
+import { Container, Grid, List } from 'semantic-ui-react'
+
 import logo from '../assets/logo.png'
 import chromeFavicon from '../assets/chromeFavicon.png'
+
+import FuzzHeader from './components/FuzzHeader'
+import Tab from './components/Tab'
 
 import './Popup.css'
 
@@ -21,11 +25,14 @@ export default class Popup extends Component {
     }
     this.handleSearchChange = this.handleSearchChange.bind(this)
     this.getChromeTabs = this.getChromeTabs.bind(this)
+    this.prepareTabs = this.prepareTabs.bind(this)
   }
+
   componentDidMount () {
     this.refs.searchInput.focus()
     this.getChromeTabs()
   }
+
   resetComponent () {
     this.setState({
       search: {
@@ -35,6 +42,7 @@ export default class Popup extends Component {
     })
     this.getChromeTabs()
   }
+
   getChromeTabs () {
     chrome.tabs.query({currentWindow: true}, tabs => {
       this.setState({
@@ -42,6 +50,7 @@ export default class Popup extends Component {
       })
     })
   }
+
   handleSearchChange (e) {
     const fuse = new Fuse(this.state.tabs, {keys: ['title', 'url']})
     const searchTerm = e.target.value
@@ -58,39 +67,33 @@ export default class Popup extends Component {
     const searchResults = fuse.search(searchTerm)
     this.setState({search: {isLoading: false, results: searchResults}})
   }
+
+  handleTabClick (tabId) {
+    var updateProperties = {'active': true}
+    chrome.tabs.update(tabId, updateProperties)
+  }
+
+  prepareTabs (tabs) {
+    const preparedTabs = tabs.map(tab => {
+      const favicon = tab.favIconUrl.startsWith('chrome://') ? chromeFavicon : tab.favIconUrl
+      const title = tab.title.length > 75 ? tab.title.substr(0, 75) + '...' : tab.title
+
+      return (
+        <Tab key={tab.id} tabId={tab.id} favicon={favicon} title={title} onClick={this.handleTabClick} />
+      )
+    })
+
+    return preparedTabs
+  }
+
   render () {
-    const tabs = this.state.tabs.map(tab => {
-      const favicon = tab.favIconUrl.startsWith('chrome://') ? chromeFavicon : tab.favIconUrl
-      return (
-        <List.Item key={tab.id}>
-          <Image avatar src={favicon} />
-          <List.Content>
-            <List.Header>{tab.title}</List.Header>
-          </List.Content>
-        </List.Item>
-      )
-    })
-    const searchResults = this.state.search.results.map(tab => {
-      const favicon = tab.favIconUrl.startsWith('chrome://') ? chromeFavicon : tab.favIconUrl
-      return (
-        <List.Item key={tab.id}>
-          <Image avatar src={favicon} />
-          <List.Content>
-            <List.Header>{tab.title}</List.Header>
-          </List.Content>
-        </List.Item>
-      )
-    })
+    const tabs = this.prepareTabs(this.state.tabs)
+    const searchResults = this.prepareTabs(this.state.search.results)
     const initialOrSearchResults = this.state.search.results.length > 0 ? searchResults : tabs
+
     return (
       <Container>
-        <Header as='h1' >
-          <Image inline src={logo} />
-          <Header.Content>
-            FuzzTabs
-            <Header.Subheader>Fuzzy Search your tabs.</Header.Subheader>
-          </Header.Content>
-        </Header>
+        <FuzzHeader headingLevel='h1' logo={logo} title='FuzzTabs' subtitle='Fuzzy search your tabs.' />
         <Grid>
           <Grid.Column width={16}>
             <div className='ui search'>
@@ -110,6 +113,9 @@ export default class Popup extends Component {
             <List selection divided relaxed verticalAlign='middle'>
               {initialOrSearchResults}
             </List>
+          </Grid.Column>
+          <Grid.Column width={16}>
+            <div>Made by Slamcode</div>
           </Grid.Column>
         </Grid>
       </Container>
