@@ -5,7 +5,7 @@ import { List, Image } from 'semantic-ui-react'
 export default class Tab extends Component {
   render () {
     return (
-      <List.Item onClick={(e) => this.props.onClick(this.props.tabId)}>
+      <List.Item onClick={(e) => this.props.onClick(this.props.tabId)} tabIndex={this.props.tabIndex}>
         <Image avatar src={this.props.favicon} />
         <List.Content>
           <List.Header>{this.props.title}</List.Header>
