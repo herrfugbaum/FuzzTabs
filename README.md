@@ -1,5 +1,9 @@
 # FuzzTabs
 
+[![Travis branch](https://img.shields.io/travis/herrfugbaum/FuzzTabs/master.svg?style=flat-square)](https://travis-ci.org/herrfugbaum/FuzzTabs)
+[![Codecov branch](https://img.shields.io/codecov/c/github/herrfugbaum/FuzzTabs/master.svg?style=flat-square)](https://codecov.io/gh/herrfugbaum/FuzzTabs)
+[![Code Climate](https://img.shields.io/codeclimate/github/herrfugbaum/FuzzTabs.svg?style=flat-square)](https://codeclimate.com/github/herrfugbaum/FuzzTabs)
+
 FuzzTabs is an extension for the Google Chrome browser which organizes your tabs in a vertical, scrollable list and enables you to search in your tabs.
 
 ## Installation
