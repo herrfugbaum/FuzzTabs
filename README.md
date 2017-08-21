@@ -14,16 +14,17 @@ FuzzTabs is an extension for the Google Chrome browser which organizes your tabs
 
 ## Privacy
 
-FuzzTabs only uses the permissions it needs.
 **Your data will not be used** for anything else than the FuzzTabs functionality.
 
 
 ### Requested Permissions
 
+FuzzTabs only uses the permissions it needs.
+
 See the Google Chrome [documentation](https://developer.chrome.com/extensions/declare_permissions) for more information about permissions.
 
 #### Tabs
 
-Requested because FuzzTabs needs to read the *titles*, *URLs* and the URLs of the *favicons* of your tabs.
+Requested because FuzzTabs needs to read the *titles*, *URLs* and the *URLs of the favicons* of your tabs.
 
 ![Screenshot of the tabs permissions](Tab-permissions.jpeg)
