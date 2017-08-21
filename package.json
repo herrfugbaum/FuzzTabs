@@ -36,21 +36,24 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
+    "babel-jest": "^20.0.3",
     "babel-loader": "^7.1.1",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react-app": "^3.0.2",
-    "babel-jest": "^20.0.3",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.5",
+    "enzyme": "^2.9.1",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.30.1",
     "img-loader": "^2.0.0",
     "jest": "^20.0.4",
+    "react-test-renderer": "^15.6.1",
     "regenerator-runtime": "^0.11.0",
+    "sinon": "^3.2.1",
+    "standard": "^10.0.3",
     "style-loader": "^0.18.2",
     "webpack": "^3.5.5",
-    "webpack-dev-server": "^2.7.1",
-    "standard": "^10.0.3"
+    "webpack-dev-server": "^2.7.1"
   }
 }
