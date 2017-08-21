@@ -75,7 +75,7 @@ export default class Popup extends Component {
 
   prepareTabs (tabs) {
     const preparedTabs = tabs.map(tab => {
-      const favicon = tab.favIconUrl.startsWith('chrome://') ? chromeFavicon : tab.favIconUrl
+      const favicon = !tab.favIconUrl || tab.favIconUrl.startsWith('chrome://') ? chromeFavicon : tab.favIconUrl
       const title = tab.title.length > 75 ? tab.title.substr(0, 75) + '...' : tab.title
 
       return (
