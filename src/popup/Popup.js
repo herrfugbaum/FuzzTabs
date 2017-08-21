@@ -79,7 +79,7 @@ export default class Popup extends Component {
       const title = tab.title.length > 75 ? tab.title.substr(0, 75) + '...' : tab.title
 
       return (
-        <Tab key={tab.id} tabId={tab.id} favicon={favicon} title={title} onClick={this.handleTabClick} />
+        <Tab key={tab.id} tabId={tab.id} favicon={favicon} title={title} onClick={this.handleTabClick} tabIndex='0' />
       )
     })
 
