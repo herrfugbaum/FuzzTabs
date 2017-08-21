@@ -18,8 +18,7 @@
     ]
   },
   "permissions": [
-    "tabs",
-     "<all_urls>"
+    "tabs"
   ],
   "content_security_policy": "script-src 'self' http://localhost:8097; object-src 'self'",
   "commands": {
