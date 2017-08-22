@@ -21,4 +21,12 @@ describe('<Tab />', () => {
     expect(onTabClick.calledOnce).toBe(true)
     expect(onTabClick.args[0][0]).toBe(1)
   })
+
+  it('simulates keydown events', () => {
+    const onTabKeyDown = sinon.spy()
+    const wrapper = shallow(<Tab onKeyDown={onTabKeyDown} tabId={1} />)
+    wrapper.find(List.Item).simulate('keyDown', {key: 'Enter'})
+    expect(onTabKeyDown.calledOnce).toBe(true)
+    expect(onTabKeyDown.args[0][1]).toBe(1)
+  })
 })

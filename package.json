@@ -1,7 +1,7 @@
 {
   "name": "fuzztabs",
   "private": true,
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Chrome extension to organize tabs in a vertical, searchable list.",
   "main": "index.js",
   "scripts": {

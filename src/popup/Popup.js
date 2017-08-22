@@ -26,6 +26,8 @@ export default class Popup extends Component {
     this.handleSearchChange = this.handleSearchChange.bind(this)
     this.getChromeTabs = this.getChromeTabs.bind(this)
     this.prepareTabs = this.prepareTabs.bind(this)
+    this.handleTabClick = this.handleTabClick.bind(this)
+    this.handleTabKeyDown = this.handleTabKeyDown.bind(this)
   }
 
   componentDidMount () {
@@ -69,8 +71,15 @@ export default class Popup extends Component {
   }
 
   handleTabClick (tabId) {
-    var updateProperties = {'active': true}
+    const updateProperties = {'active': true}
     chrome.tabs.update(tabId, updateProperties)
+  }
+
+  handleTabKeyDown (event, tabId) {
+    if (event.key === 'Enter') {
+      const updateProperties = {'active': true}
+      chrome.tabs.update(tabId, updateProperties)
+    }
   }
 
   prepareTabs (tabs) {
@@ -79,7 +88,15 @@ export default class Popup extends Component {
       const title = tab.title.length > 75 ? tab.title.substr(0, 75) + '...' : tab.title
 
       return (
-        <Tab key={tab.id} tabId={tab.id} favicon={favicon} title={title} onClick={this.handleTabClick} tabIndex='0' />
+        <Tab
+          key={tab.id}
+          tabId={tab.id}
+          tabIndex='0'
+          favicon={favicon}
+          title={title}
+          onClick={this.handleTabClick}
+          onKeyDown={this.handleTabKeyDown}
+        />
       )
     })
 
