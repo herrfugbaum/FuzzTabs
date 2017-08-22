@@ -16,6 +16,14 @@ FuzzTabs is an extension for the Google Chrome browser which organizes your tabs
 2. In the searchbar you can search by your tabs titles and URLs.
 3. Click on the tab which you want to focus.
 
+### Keyboard Shortcuts
+
+<kbd>Tab</kbd> Cycle trough Tabs (and searchbar), beginning at the searchbar, moving down.
+
+<kbd>Shift</kbd> + <kbd>Tab</kbd> Cycle trough Tabs (and searchbar), beginning at the currently selected element, moving up.
+
+<kbd>Enter</kbd> Set focus on the selected tab (you have to select a tab in your search results before)
+
 ## Privacy
 
 **Your data will not be used** for anything else than the FuzzTabs functionality.
