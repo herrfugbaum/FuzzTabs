@@ -1,6 +1,17 @@
+@font-face {
+  font-family: 'Rana V.1';
+  src: url(../assets/Rana V1.ttf);
+}
+
 html, body {
   min-width: 640px;
   max-width: 960px;
+}
+
+.FuzzHeader {
+  font-family: 'Rana V.1';
+  font-size: 2em;
+  font-weight: normal;
 }
 
 .fullwidth-input {

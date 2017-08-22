@@ -7,7 +7,7 @@ const FuzzHeader = (props) => {
     <Header as={props.headingLevel} >
       <Image inline src={props.logo} />
       <Header.Content>
-        {props.title}
+        <span className='FuzzHeader'>{props.title}</span>
         <Header.Subheader>{props.subtitle}</Header.Subheader>
       </Header.Content>
     </Header>
