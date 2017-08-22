@@ -9,6 +9,7 @@ import chromeFavicon from '../assets/chromeFavicon.png'
 
 import FuzzHeader from './components/FuzzHeader'
 import Tab from './components/Tab'
+import FuzzFooter from './components/FuzzFooter'
 
 import './Popup.css'
 
@@ -132,7 +133,7 @@ export default class Popup extends Component {
             </List>
           </Grid.Column>
           <Grid.Column width={16}>
-            <div>Made by Slamcode</div>
+            <FuzzFooter />
           </Grid.Column>
         </Grid>
       </Container>
