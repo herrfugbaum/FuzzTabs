@@ -81,6 +81,21 @@ export default class Popup extends Component {
       const updateProperties = {'active': true}
       chrome.tabs.update(tabId, updateProperties)
     }
+
+    if (event.key === 'F5') {
+      if (event.ctrlKey) {
+        chrome.tabs.reload(tabId, { bypassCache: true })
+      }
+      chrome.tabs.reload(tabId, { bypassCache: false })
+    }
+
+    if (event.ctrlKey && event.key === 'f') {
+      this.refs.searchInput.focus()
+    }
+
+    if (event.ctrlKey && event.key === 't') {
+      chrome.tabs.create()
+    }
   }
 
   prepareTabs (tabs) {
@@ -95,6 +110,7 @@ export default class Popup extends Component {
           tabIndex='0'
           favicon={favicon}
           title={title}
+          isActive={tab.active}
           onClick={this.handleTabClick}
           onKeyDown={this.handleTabKeyDown}
         />
